@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int cmpAsc(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
+}
+
+int cmpDesc(const void* a, const void* b) {
+    return (*(int*)b - *(int*)a);
+}
+
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {5, 2, 9, 1, 5, 6};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    qsort(arr, n, sizeof(int), cmpAsc);
+    printf("Ascending: ");
+    printArray(arr, n);
+
+    qsort(arr, n, sizeof(int), cmpDesc);
+    printf("Descending: ");
+    printArray(arr, n);
+
+    return 0;
+}
