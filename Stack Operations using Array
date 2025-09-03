@@ -1,0 +1,31 @@
+#include <stdio.h>
+#define MAX 100
+
+int stack[MAX];
+int top = -1;
+
+// Function to push an element onto the stack
+void push(int value) {
+    if (top >= MAX - 1) {
+        printf("Stack Overflow! Cannot push %d\n", value);
+    } else {
+        stack[++top] = value;
+        printf("Pushed %d onto the stack.\n", value);
+    }
+}
+
+// Function to pop an element from the stack
+void pop() {
+    if (top < 0) {
+        printf("Stack Underflow! Cannot pop.\n");
+    } else {
+        printf("Popped %d from the stack.\n", stack[top--]);
+    }
+}
+
+// Function to peek at the top element
+void peek() {
+    if (top < 0) {
+        printf("Stack is empty.\n");
+    } else {
+        printf("Top element is
