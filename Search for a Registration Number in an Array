@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <string.h>
+
+int findReg(char *arr[], int n, const char *key) {
+    for (int i = 0; i < n; i++) {
+        if (strcmp(arr[i], key) == 0) return i;
+    }
+    return -1;
+}
+
+int main() {
+    char* regs[] = {"ABC123", "DEF456", "GHI789"};
+    const char* key = "DEF456";
+    int idx = findReg(regs, 3, key);
+    if (idx >= 0) printf("Found at index %d\n", idx);
+    else printf("Not found\n");
+    return 0;
+}
