@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    int data;
+    struct Node *next;
+} Node;
+
+Node* newNode(int d) {
+    Node* n = malloc(sizeof(Node));
+    n->data = d;
+    n->next = NULL;
+    return n;
+}
+
+Node* mergeLists(Node* a, Node* b) {
+    if (!a) return b;
+    Node* p = a;
+    while (p->next) p = p->next;
+    p->next = b;
+    return a;
+}
+
+void printList(Node* head) {
+    while (head) {
+        printf("%d -> ", head->data);
+        head = head->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    Node* a = newNode(1);
+    a->next = newNode(2);
+    Node* b = newNode(3);
+    b->next = newNode(4);
+    Node* merged = mergeLists(a, b);
+    printList(merged);
+    return 0;
+}
